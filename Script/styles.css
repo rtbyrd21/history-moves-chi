@@ -1,6 +1,6 @@
 #description{
     position: absolute;
-    top: 55%;
+    top: 40%;
     padding: 5%;
     font-family: 'avenir';
     font-size: 13;
@@ -14,4 +14,22 @@
 
 .fade.ng-hide {
     opacity: 0;
+}
+
+#description-container{
+    width: 75%;
+    float: left;
+}
+
+#description-container.full{
+    max-width: 80%;
+}
+
+#image-container{
+    width: 20%;
+    float: right;
+}
+
+#image-container img{
+    width: 100%;
 }

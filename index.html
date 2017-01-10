@@ -27,7 +27,8 @@
       <div ng-controller="p5Communication"></div>
       
       <div ng-controller="VisualizationCtrl" id="description">
-          <div ng-show="showDescription">{{nodeSelected}}</div>
+          <div id="description-container" ng-class="{full: images == ''}" ng-show="showDescription">{{nodeSelected}}</div>
+          <div id="image-container" ng-show="showDescription" ng-if="images"><img ng-src="{{images}}"/></div>
       </div>
       
 

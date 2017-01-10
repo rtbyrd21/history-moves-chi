@@ -8,6 +8,18 @@ function millisToMinutesAndSeconds(millis) {
   var minutes = Math.floor(millis / 60000);
   var seconds = ((millis % 60000) / 1000).toFixed(0);
   return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+}
+    
+function hmsToSecondsOnly(str) {
+    var p = str.split(':'),
+        s = 0, m = 1;
+
+    while (p.length > 0) {
+        s += m * parseInt(p.pop(), 10);
+        m *= 60;
+    }
+
+    return s;
 }    
     
 var a = function(p) {    
@@ -33,8 +45,19 @@ var diagnosisRangePoints = [];
 var crisisRangePoints = [];  
 var survivingRangePoints = [];  
 var lastReceived;
-var averageMode = false;    
+var averageMode = false;
+var pressToPlayPos = [];    
+
+p.preload = function() {
+//  interview = p.loadSound('Carol.mp3');
+}
+    
+    
+    
 p.setup = function(){
+    
+//    interview.play();
+    interview = p.loadSound('Carol.mp3');
     
     p.translate(100, 100);
     
@@ -96,7 +119,6 @@ p.setup = function(){
                 stageRunningTotal += stageProgress[key];
             }
             
-
             earlyLifeContainer = stageProgress['Early life'] / stageRunningTotal;
             
             
@@ -119,18 +141,18 @@ p.setup = function(){
             
             
             if(data.stage === 'Early life'){
-              earlyRangePoints.push({score:data.data.score, quote:data.quote, diff:data.diff, time:data.time, themes:data.theme});  
+              earlyRangePoints.push({score:data.data.score, quote:data.quote, diff:data.diff, time:data.time, themes:data.theme, images: data.images});  
             }
             if(data.stage === 'Diagnosis'){
-                diagnosisRangePoints.push({score:data.data.score, quote:data.quote, diff:data.diff, time:data.time, themes:data.theme});   
+                diagnosisRangePoints.push({score:data.data.score, quote:data.quote, diff:data.diff, time:data.time, themes:data.theme, images: data.images});   
             }
             if(data.stage === 'Crisis'){
-                crisisRangePoints.push({score:data.data.score, quote:data.quote, diff:data.diff, time:data.time, themes:data.theme}); 
+                crisisRangePoints.push({score:data.data.score, quote:data.quote, diff:data.diff, time:data.time, themes:data.theme, images: data.images}); 
                 
             }
             
             if(data.stage === 'Still surviving'){                
-                survivingRangePoints.push({score:data.data.score, quote:data.quote, diff:data.diff, time:data.time, themes:data.theme}); 
+                survivingRangePoints.push({score:data.data.score, quote:data.quote, diff:data.diff, time:data.time, themes:data.theme, images: data.images}); 
                 
             }
             
@@ -165,6 +187,8 @@ p.draw = function(){
     
     
     earlyRangePoints.forEach(function(item, index){ 
+        
+//        console.log(item.images);
         if(index === earlyRangePoints.length - 1 && lastReceived == 'Early life'){
             
             if((((item.time + item.diff) / 1000) * 60)> p.frameCount){
@@ -190,12 +214,18 @@ p.draw = function(){
         if(averageMode == true){
             p.ellipse(spacing * (index + 1), earlyAverage, 10, 10);
         }else{
-            p.ellipse(spacing * (index + 1), y, 10, 10);
+            if(pressToPlayPos.length && pressToPlayPos[1] === spacing * (index + 1)){
+                    p.triangle(spacing * (index + 1) - 5, y - 5, 
+                               spacing * (index + 1) - 5, y + 5, 
+                               spacing * (index + 1) + 4, y);
+                }else{
+                    p.ellipse(spacing * (index + 1), y, 10, 10);
+                }
         }
         
             
             
-            quoteLog.push({x:spacing * (index + 1), y: y, quote:item.quote, themes: item.themes, time:item.time, stage:'early'});
+            quoteLog.push({x:spacing * (index + 1), y: y, quote:item.quote, themes: item.themes, time:item.time, stage:'early', images:item.images});
     });
     
     
@@ -216,11 +246,17 @@ p.draw = function(){
             if(averageMode == true){
                 p.ellipse(spacing * (index + 1) + earlyLifeRange[1], diagnosisAverage, 10, 10);
                 }else{
-                p.ellipse(spacing * (index + 1) + earlyLifeRange[1], y, 10, 10);
+                    if(pressToPlayPos.length && pressToPlayPos[1] === spacing * (index + 1)){
+                    p.triangle(spacing * (index + 1) + earlyLifeRange[1] - 5, y - 5, 
+                               spacing * (index + 1) + earlyLifeRange[1] - 5, y + 5, 
+                               spacing * (index + 1) + earlyLifeRange[1] + 4, y);
+                    }else{
+                         p.ellipse(spacing * (index + 1) + earlyLifeRange[1], y, 10, 10);
+                    }
             }
         
         
-            quoteLog.push({x:spacing * (index + 1), y: y, quote:item.quote, themes: item.themes, time:item.time, stage:'diagnosis'});
+            quoteLog.push({x:spacing * (index + 1), y: y, quote:item.quote, themes: item.themes, time:item.time, stage:'diagnosis', images:item.images});
     });
     
     crisisRangePoints.forEach(function(item, index){
@@ -233,14 +269,21 @@ p.draw = function(){
                  crisisAverage = crisisAveragePoints.reduce(function(sum, a,i,ar) { sum += a;  return i==ar.length-1?(ar.length==0?0:sum/ar.length):sum},0);
                 
             }
-        
+            
             if(averageMode == true){
                 p.ellipse((spacing * (index + 1)) + diagnosisRange[1], crisisAverage, 10, 10);
                 }else{
-                p.ellipse((spacing * (index + 1)) + diagnosisRange[1], y, 10, 10);
+                    
+                if(pressToPlayPos.length && pressToPlayPos[1] === spacing * (index + 1)){
+                    p.triangle((spacing * (index + 1)) + diagnosisRange[1] - 5, y - 5, 
+                               (spacing * (index + 1)) + diagnosisRange[1] - 5, y + 5, 
+                               (spacing * (index + 1)) + diagnosisRange[1] + 4, y);
+                    }else{
+                         p.ellipse((spacing * (index + 1)) + diagnosisRange[1], y, 10, 10);
+                    }    
             }
         
-            quoteLog.push({x:spacing * (index + 1), y: y, quote:item.quote, themes: item.themes, time:item.time, stage:'crisis'});
+            quoteLog.push({x:spacing * (index + 1), y: y, quote:item.quote, themes: item.themes, time:item.time, stage:'crisis', images:item.images});
     });
     
      survivingRangePoints.forEach(function(item, index){
@@ -257,10 +300,16 @@ p.draw = function(){
             if(averageMode == true){
                 p.ellipse((spacing * (index + 1)) + crisisRange[1], survivingAverage, 10, 10);
                 }else{
-                p.ellipse((spacing * (index + 1)) + crisisRange[1], y, 10, 10);
+                  if(pressToPlayPos.length && pressToPlayPos[1] === spacing * (index + 1)){
+                    p.triangle((spacing * (index + 1)) + crisisRange[1] - 5, y - 5, 
+                               (spacing * (index + 1)) + crisisRange[1] - 5, y + 5, 
+                               (spacing * (index + 1)) + crisisRange[1] + 4, y);
+                    }else{
+                          p.ellipse((spacing * (index + 1)) + crisisRange[1], y, 10, 10);
+                    }     
             }
          
-            quoteLog.push({x:spacing * (index + 1), y: y, quote:item.quote, themes: item.themes, time:item.time, stage:'surviving'});
+            quoteLog.push({x:spacing * (index + 1), y: y, quote:item.quote, themes: item.themes, time:item.time, stage:'surviving', images:item.images});
     });
 
     p.fill(50);
@@ -310,7 +359,8 @@ p.draw = function(){
     hit = false;
     $rootScope.displayDescription = 0;
     $rootScope.showDescription = false;
-    quoteLog.forEach(function(item){
+    quoteLog.forEach(function(item, index){
+        var playX = item.x;
         if(item.stage === 'diagnosis'){
             item.x += earlyLifeContainer * visWidth;
         }else if(item.stage === 'crisis'){
@@ -321,8 +371,9 @@ p.draw = function(){
         
         var dist = p.dist(p.mouseX,p.mouseY,item.x,item.y);
         if(dist < 10){
+            pressToPlayPos = [index, playX, item.y];
             $rootScope.displayDescription--;
-            $rootScope.$broadcast('quoteMarkerHover', {quote: item.quote});
+            $rootScope.$broadcast('quoteMarkerHover', {quote: item.quote, images: item.images});
             item.themes.forEach(function(i,index){
                 p.fill(50);
                 p.textAlign(p.CENTER);
@@ -331,17 +382,25 @@ p.draw = function(){
             p.fill(120);
             p.textAlign(p.CENTER);
             p.text(millisToMinutesAndSeconds(item.time), item.x,item.y - 12);
-
+            
+            if(p.mouseIsPressed){
+                interview.jump(hmsToSecondsOnly(millisToMinutesAndSeconds(item.time)));
+            }
+            
+            
             $rootScope.$apply();
         }else{
             $rootScope.displayDescription++;
             $rootScope.$apply();
+            
         }
     });
     if($rootScope.displayDescription - quoteLog.length < 0){
         $rootScope.showDescription = true;
+        
     }else{
         $rootScope.showDescription = false;
+        pressToPlayPos = [];
     };
     $rootScope.displayDescription = 0;
     $rootScope.$apply();
@@ -377,7 +436,8 @@ $.each(lyrics[0], function (index, value) {
     lyrics[0][index]['diff'] = time;
     
     setTimeout(function(){
-         getQuoteData(quote, time, value.stage, value.overwrite, lyrics[0][index]['diff'], value.themes, index);
+         getQuoteData(quote, time, value.stage, value.overwrite, lyrics[0][index]['diff'], value.themes,
+                      value.images, index);
     },100);
    
     
@@ -386,17 +446,17 @@ $.each(lyrics[0], function (index, value) {
 
     
 
-function getQuoteData(quote, time, stage, overwrite, difference, themes, index){
+function getQuoteData(quote, time, stage, overwrite, difference, themes, images, index){
     var diff = 0;
     if(index != 0 && index != lyrics[0].length - 1){
         diff = lyrics[0][index + 1]['diff'] - lyrics[0][index]['diff'];
     }else{
         diff = lyrics[0][index]['diff'];
     }
-    
+
     setTimeout(function() {  
-        $rootScope.sendData(quote, overwrite, stage, diff, time, themes);
-    }, (time * 1) / 10); 
+        $rootScope.sendData(quote, overwrite, stage, diff, time, themes, images);
+    }, (time * 1) / 100); 
 }
 
 var myp5 = new p5(a);     
