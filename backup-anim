@@ -1,0 +1,307 @@
+app.controller("p5Communication", function($scope, $rootScope, countService) {
+ 
+function per(num, amount){
+  return num*amount/100;
+}    
+    
+var a = function(p) {    
+
+var earlyLife;
+var diagnosis;
+var crisis;
+var stillSurviving;
+var earlyLifeRange;
+var diagnosisRange;   
+var crisisRange;
+var stillSurvivingRange;
+var earlyLifeContainer = 0; 
+var diagnosisContainer = 0;
+var crisisContainer = 0;
+var stillSurvivingContainer = 0;    
+var quoteLog = [];
+var stageProgress = {};
+var visWidth;
+var visHeight;
+var earlyRangePoints = [];
+var diagnosisRangePoints = [];   
+var crisisRangePoints = [];  
+var survivingRangePoints = [];  
+var lastReceived;
+var previousEarlyLifeContainer = 0;
+var previousDiagnosisContainer = 0;
+var percentageMappedEarly; 
+var currentTime;
+var currentDiff;
+p.setup = function(){
+    
+    p.translate(100, 100);
+    
+    p.createCanvas(p.windowWidth, 1000);
+    
+    visWidth = p.windowWidth - 50;
+    visHeight = 300;
+    var decraments = {};
+    var stages = [];
+    $.each(lyrics[0], function (index, value) {
+        if(value.stage){
+            stages.push(value.stage);
+        }
+    });
+    
+    earlyLife = stages.filter(function(x){return x=="Early life"}).length;
+    diagnosis = stages.filter(function(x){return x=="Diagnosis"}).length;
+    crisis = stages.filter(function(x){return x=="Crisis"}).length;
+    stillSurviving = stages.filter(function(x){return x=="Still surviving"}).length;
+    var length = stages.length;
+    
+
+        $rootScope.$on('quoteReceived', function (event, data) {
+        if(data.stage.length){
+            lastReceived = data.stage;
+            if(stageProgress[data.stage] == undefined){
+                stageProgress[data.stage] = 0;
+            }
+            
+            stageProgress[data.stage]++;
+            var stageRunningTotal = 0;
+            for(var key in stageProgress){
+                stageRunningTotal += stageProgress[key];
+            }
+            
+
+            earlyLifeContainer = stageProgress['Early life'] / stageRunningTotal;
+            
+            diagnosisContainer = stageProgress['Diagnosis'] / stageRunningTotal;
+            
+            crisisContainer = stageProgress['Crisis'] / stageRunningTotal;
+            
+            stillSurvivingContainer = stageProgress['Still surviving'] / stageRunningTotal;
+            
+            
+            earlyLifeContainer = earlyLifeContainer || 0;
+            diagnosisContainer = diagnosisContainer || 0;
+            crisisContainer = crisisContainer || 0;
+            stillSurvivingContainer = stillSurvivingContainer || 0;
+            
+            earlyLifeRange = [0, earlyLifeContainer * visWidth];
+            diagnosisRange = [earlyLifeContainer * visWidth, earlyLifeRange[1] + diagnosisContainer * visWidth];
+            crisisRange = [(earlyLifeContainer + diagnosisContainer) * visWidth, diagnosisRange[1] + crisisContainer * visWidth];
+            stillSurvivingRange = [(earlyLifeContainer + diagnosisContainer + crisisContainer) * visWidth, crisisRange[1] + stillSurvivingContainer * visWidth];
+            
+            
+            if(data.stage === 'Early life'){
+              earlyRangePoints.push({score:data.data.score, quote:data.quote, diff:data.diff, time:data.time});  
+            }
+            if(data.stage === 'Diagnosis'){
+                diagnosisRangePoints.push({score:data.data.score, quote:data.quote, diff:data.diff, time:data.time});   
+            }
+            if(data.stage === 'Crisis'){
+                crisisRangePoints.push({score:data.data.score, quote:data.quote, diff:data.diff, time:data.time}); 
+                
+            }
+            
+            if(data.stage === 'Still surviving'){                
+                survivingRangePoints.push({score:data.data.score, quote:data.quote, diff:data.diff, time:data.time}); 
+                
+            }
+            
+        }
+    });
+    
+    
+    
+};
+
+
+p.draw = function(){
+    p.frameRate(60);
+    p.background(255);
+    p.noFill();
+    earlyLifeContainer = earlyLifeContainer ? earlyLifeContainer : 0;
+    diagnosisContainer = diagnosisContainer ? diagnosisContainer : 0;
+    crisisContainer = crisisContainer ? crisisContainer : 0;
+    stillSurvivingContainer = stillSurvivingContainer ? stillSurvivingContainer : 0;
+    
+    
+    
+    quoteLog = [];
+    var percentage = 0;
+    earlyRangePoints.forEach(function(item, index){
+        if(index === earlyRangePoints.length - 1){
+            if(lastReceived == 'Early life'){
+                currentTime = item.time;
+                currentDiff = item.diff;
+            }
+
+
+
+            if((earlyLifeContainer * visWidth) - previousEarlyLifeContainer != 0){
+                
+                  var difference = p.map((earlyLifeContainer * visWidth) - previousEarlyLifeContainer, 0, visWidth, 0, 1);
+                  
+
+                  
+            
+                  var percentage = (p.map(p.frameCount, (currentTime / 1000) * 60, ((currentTime + currentDiff) / 1000) * 60, 0, 100) / 100);
+                
+ 
+                percentage = percentage * difference;
+
+                if(percentage > .99){
+                    previousEarlyLifeContainer = earlyLifeContainer * visWidth;
+                    previousDiagnosisContainer = diagnosisContainer * visWidth;
+                }
+
+//                percentageMappedEarly = p.map(percentage, previousEarlyLifeContainer, earlyLifeContainer, 0, 1);
+//                console.log(percentageMappedEarly, 'Early');
+            percentageMappedEarly = percentage;
+//            }
+        }
+        }
+            
+            var y = p.map(item['score'], -10, 10, visHeight, 0);
+            var spacing = earlyLifeRange[1] / (earlyRangePoints.length + 1);
+            p.ellipse(spacing * (index + 1), y, 10, 10);
+            quoteLog.push({x:spacing * (index + 1), y: y, quote:item.quote});
+    });
+    
+    diagnosisRangePoints.forEach(function(item, index){
+        
+        
+        if(index === diagnosisRangePoints.length - 1){
+            if(lastReceived == 'Diagnosis'){
+                currentTime = item.time;
+                currentDiff = item.diff;
+            }
+        
+//            if((((currentTime + currentDiff) / 1000) * 60)> p.frameCount){
+                  var difference = 1 - Math.abs(p.map(diagnosisContainer - previousDiagnosisContainer, 0, visWidth, 0, 1));
+                  
+                  var percentage = (p.map(p.frameCount, (currentTime / 1000) * 60, ((currentTime + currentDiff) / 1000) * 60, 0, 100) / 100);
+                
+               if(difference){    
+                    percentage = percentage * difference;
+               }else{
+                    percentage = 1;
+               }
+   
+                if(percentage > .99){
+                    previousEarlyLifeContainer = earlyLifeContainer * visWidth;
+                    previousDiagnosisContainer = diagnosisContainer * visWidth;
+                }
+
+                percentageMappedDiagnosis = p.map(percentage, previousDiagnosisContainer, diagnosisContainer, 0, 1);
+//                console.log(percentageMappedDiagnosis, 'Diagnosis');
+//            }
+        }
+        
+        
+            var y = p.map(item['score'], -10, 10, visHeight, 0);
+            var spacing = (diagnosisRange[1] - diagnosisRange[0]) / (diagnosisRangePoints.length + 1);
+            p.ellipse(spacing * (index + 1) + earlyLifeRange[1], y, 10, 10);
+            quoteLog.push({x:spacing * (index + 1), y: y, quote:item.quote});
+    });
+    
+    crisisRangePoints.forEach(function(item, index){
+            var y = p.map(item['score'], -10, 10, visHeight, 0);
+            var spacing = (crisisRange[1] - crisisRange[0]) / (crisisRangePoints.length + 1);
+            p.ellipse((spacing * (index + 1)) + diagnosisRange[1], y, 10, 10);
+            quoteLog.push({x:spacing * (index + 1), y: y, quote:item.quote});
+    });
+    
+     survivingRangePoints.forEach(function(item, index){
+            var y = p.map(item['score'], -10, 10, visHeight, 0);
+            var spacing = (stillSurvivingRange[1] - stillSurvivingRange[0]) / (survivingRangePoints.length + 1);
+            p.ellipse((spacing * (index + 1)) + crisisRange[1], y, 10, 10);
+            quoteLog.push({x:spacing * (index + 1), y: y, quote:item.quote});
+    });
+
+    
+//    if(percentageMappedEarly < 0){
+//        p.rect(0, 0, (previousEarlyLifeContainer) + ((earlyLifeContainer  * visWidth) * percentageMappedEarly), visHeight);
+//    }else{
+    
+    if(previousEarlyLifeContainer > earlyLifeContainer * visWidth){
+        p.rect(0, 0, 
+               (previousEarlyLifeContainer) + 
+               ((previousEarlyLifeContainer - (earlyLifeContainer * visWidth)) * percentageMappedEarly), 
+               visHeight)
+    }else if(previousEarlyLifeContainer < earlyLifeContainer * visWidth){
+         p.rect(0, 0, 
+               (earlyLifeContainer * visWidth) + 
+               ((previousEarlyLifeContainer + (earlyLifeContainer * visWidth)) * percentageMappedEarly), 
+               visHeight)
+    }else{
+        p.rect(0, 0, (earlyLifeContainer  * visWidth) * percentageMappedEarly, visHeight);
+    }
+//    }
+//    else{
+//        p.rect(0, 0, (earlyLifeContainer * visWidth) * percentageMappedEarly, visHeight);
+//    }
+    
+    
+//    p.rect(0, 0, (earlyLifeContainer  * visWidth) * percentageMappedEarly, visHeight);
+
+//    p.rect(earlyLifeContainer * (visWidth * percentageMappedEarly), 0, diagnosisContainer * visWidth, visHeight);
+//    p.rect((diagnosisContainer + earlyLifeContainer) * visWidth, 0, crisisContainer * visWidth, visHeight);
+//    p.rect((diagnosisContainer + earlyLifeContainer + crisisContainer) * visWidth, 0, stillSurvivingContainer * visWidth, visHeight);
+
+    
+    
+    
+    
+    hit = false;
+    quoteLog.forEach(function(item){
+        var dist = p.dist(p.mouseX,p.mouseY,item.x,item.y);
+        if(dist < 10){
+            $rootScope.$broadcast('quoteMarkerHover', {quote: item.quote});
+        }
+    });
+    
+    
+};
+
+};
+
+$.each(lyrics[0], function (index, value) {
+    var m = parseInt((value.start.substring(0, 2) * 60)*1000);
+    var s = parseInt((value.start.substring(3, 5))*1000);
+    var mil = parseInt(value.start.substring(6, 8) / 1000);
+    var time = m + s + mil;
+    var quote = value.quote.replace(/\[.*?\]/g, "");
+    
+    var calcDifference;
+    
+//    if(index != 0){
+//        lyrics[0][index]['diff'] = (lyrics[0][index - 1]['diff']) ;   
+//    }else{
+//        lyrics[0][index]['diff'] = 0;
+//    }
+    lyrics[0][index]['diff'] = time;
+    
+    setTimeout(function(){
+         getQuoteData(quote, time, value.stage, value.overwrite, lyrics[0][index]['diff'], index);
+    },100);
+   
+    
+});
+
+
+    
+
+function getQuoteData(quote, time, stage, overwrite, difference, index){
+    var diff = 0;
+    if(index != 0 && index != lyrics[0].length - 1){
+        diff = lyrics[0][index + 1]['diff'] - lyrics[0][index]['diff'];
+    }else{
+        diff = lyrics[0][index]['diff'];
+    }
+    
+    setTimeout(function() {  
+        $rootScope.sendData(quote, overwrite, stage, diff, time);
+    }, (time * 1)); 
+}
+
+var myp5 = new p5(a);     
+    
+});

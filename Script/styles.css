@@ -1,0 +1,17 @@
+#description{
+    position: absolute;
+    top: 55%;
+    padding: 5%;
+    font-family: 'avenir';
+    font-size: 13;
+    line-height: 2;
+}   
+
+.fade {
+    transition: all linear 500ms;
+    opacity: 1;
+}
+
+.fade.ng-hide {
+    opacity: 0;
+}
