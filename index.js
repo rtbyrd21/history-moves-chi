@@ -10,7 +10,7 @@ var _ = require('underscore');
 var server = http.createServer(app);
 var io = require('socket.io')(server);
 var request = require('request');
-server.listen(8080); 
+server.listen(process.env.PORT || 8080); 
 
 
 var colors = [["#7B0051"], ['#007A87'], ['#00D1c1'], ['#8CE071'], ['#FFB400'], ['#FFAA91'], ['#B4A76C']];
