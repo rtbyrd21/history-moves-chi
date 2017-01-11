@@ -61,9 +61,9 @@ p.setup = function(){
     
     p.translate(100, 100);
     
-    p.createCanvas(p.windowWidth, 1000);
+    p.createCanvas(p.windowWidth * .75, 1000);
     
-    visWidth = p.windowWidth - 50;
+    visWidth = (p.windowWidth * .75);
     visHeight = 300;
     var decraments = {};
     var stages = [];
@@ -185,7 +185,14 @@ p.draw = function(){
     
     quoteLog = [];
     
-    
+    p.stroke(190);
+    p.line(0, visHeight/2, visWidth, visHeight/2);
+    p.fill(125);
+    p.text('20', 20, 20);
+    p.text('0', 0, 0);
+    p.text('-20', 20, visHeight - 20);
+    p.stroke(50);
+    p.fill(255);
     earlyRangePoints.forEach(function(item, index){ 
         
 //        console.log(item.images);
@@ -198,7 +205,7 @@ p.draw = function(){
             }
         }
             
-            var y = p.map(item['score'], -10, 10, visHeight, 0);
+            var y = p.map(item['score'], -20, 20, visHeight, 0);
             
             
             var spacing = earlyLifeRange[1] / (earlyRangePoints.length + 1);
@@ -232,7 +239,7 @@ p.draw = function(){
     
     
     diagnosisRangePoints.forEach(function(item, index){
-            var y = p.map(item['score'], -10, 10, visHeight, 0);
+            var y = p.map(item['score'], -20, 20, visHeight, 0);
             var spacing = (diagnosisRange[1] - diagnosisRange[0]) / (diagnosisRangePoints.length + 1);
         
             
@@ -260,7 +267,7 @@ p.draw = function(){
     });
     
     crisisRangePoints.forEach(function(item, index){
-            var y = p.map(item['score'], -10, 10, visHeight, 0);
+            var y = p.map(item['score'], -20, 20, visHeight, 0);
             var spacing = (crisisRange[1] - crisisRange[0]) / (crisisRangePoints.length + 1);
         
             crisisAveragePoints.push(y);
@@ -287,7 +294,7 @@ p.draw = function(){
     });
     
      survivingRangePoints.forEach(function(item, index){
-            var y = p.map(item['score'], -10, 10, visHeight, 0);
+            var y = p.map(item['score'], -20, 20, visHeight, 0);
             var spacing = (stillSurvivingRange[1] - stillSurvivingRange[0]) / (survivingRangePoints.length + 1);
          
             survivingAveragePoints.push(y);
@@ -312,6 +319,7 @@ p.draw = function(){
             quoteLog.push({x:spacing * (index + 1), y: y, quote:item.quote, themes: item.themes, time:item.time, stage:'surviving', images:item.images});
     });
 
+    
     p.fill(50);
     p.noStroke();
     p.textAlign(p.CENTER);

@@ -1,7 +1,8 @@
 #description{
     position: absolute;
     top: 40%;
-    padding: 5%;
+    padding: 0%;
+    padding-top: 5%; 
     font-family: 'avenir';
     font-size: 13;
     line-height: 2;
@@ -16,6 +17,11 @@
     opacity: 0;
 }
 
+#description{
+    width:75%;
+    margin-left: 12.5%;
+}
+
 #description-container{
     width: 75%;
     float: left;
@@ -23,6 +29,7 @@
 
 #description-container.full{
     max-width: 80%;
+    float: left;
 }
 
 #image-container{
@@ -32,4 +39,8 @@
 
 #image-container img{
     width: 100%;
+}
+
+#defaultCanvas0{
+   margin-left: 12.5%;
 }
