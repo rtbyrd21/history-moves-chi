@@ -30,7 +30,10 @@
           <div id="description-container" ng-class="{full: images == ''}" ng-show="showDescription">{{nodeSelected}}</div>
           <div id="image-container" ng-show="showDescription" ng-if="images"><img ng-src="{{images}}"/></div>
       </div>
-      
+
+      <div id="filter-container" ng-repeat="i in colors">
+        <div class="filter" ng-click="toggleFilter(i[0])" ng-style="{'top': {{$index * 25}} + 'px', 'background-color': (filters.indexOf(i[0]) > - 1) ? {{i[1]}} : 'grey'  }">{{i[0]}}</div>
+      </div>
 
   </body>
 </html>

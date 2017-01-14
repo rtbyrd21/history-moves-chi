@@ -20,7 +20,19 @@ function hmsToSecondsOnly(str) {
     }
 
     return s;
-}    
+}
+
+var colors = {
+    "family" : [136,168,37],
+    "violence": [53,32,59],
+    "house": [145,17,70],
+    "neighborhood": [207,74,48],
+    "poverty": [237,140,43],
+    "addiction": [74,217,217],
+    "stigma": [242,56,90],
+    "system": [247,233,103]
+}
+
     
 var a = function(p) {    
 
@@ -47,6 +59,8 @@ var survivingRangePoints = [];
 var lastReceived;
 var averageMode = false;
 var pressToPlayPos = [];    
+var filters = [];
+var circleOpacity = 150;
 
 p.preload = function() {
 //  interview = p.loadSound('Carol.mp3');
@@ -80,30 +94,7 @@ p.setup = function(){
     var length = stages.length;
     
     
-//    p.rect(0, 0, 600, visHeight);
-    
-    
-    
-//    var earlyLifeContainer = earlyLife / length;
-//
-//    p.rect(0, 0, earlyLifeContainer * visWidth, visHeight);
-//    
-//    var diagnosisContainer = diagnosis / length;
-//    p.rect(earlyLifeContainer * visWidth, 0, diagnosisContainer * visWidth, visHeight);
-//    
-//    var crisisContainer = crisis / length;
-//    p.rect((diagnosisContainer + earlyLifeContainer) * visWidth, 0, crisisContainer * visWidth, visHeight);
-//    
-//    var stillSurvivingContainer = stillSurviving / length;
-//    p.rect((diagnosisContainer + earlyLifeContainer + crisisContainer) * visWidth, 0, stillSurvivingContainer * visWidth, visHeight);
-    
-//    earlyLifeRange = [0, earlyLifeContainer * visWidth];
-//    diagnosisRange = [earlyLifeContainer * visWidth, earlyLifeRange[1] + diagnosisContainer * visWidth];
-//    crisisRange = [(earlyLifeContainer + diagnosisContainer) * visWidth, diagnosisRange[1] + crisisContainer * visWidth];
-//    stillSurvivingRange = [(earlyLifeContainer + diagnosisContainer + crisisContainer) * visWidth, crisisRange[1] + stillSurvivingContainer * visWidth];
-    
 
-    
     
 
         $rootScope.$on('quoteReceived', function (event, data) {
@@ -158,6 +149,21 @@ p.setup = function(){
             
         }
     });
+
+
+    $rootScope.$on('toggleFilter', function (event, data) {
+
+        if(filters.indexOf(data.filter) > -1){
+            filters.splice(filters.indexOf(data.filter), 1);
+        }else{
+           filters.push(data.filter); 
+
+        }   
+    }); 
+
+    $rootScope.$on('clearFilters', function(){
+        filters = [];
+    });
     
     
     
@@ -170,7 +176,8 @@ var diagnosisAveragePoints = [];
 var survivingAverage = 0;
 var survivingAveragePoints = [];
 var crisisAverage = 0;
-var crisisAveragePoints = [];     
+var crisisAveragePoints = [];   
+
     
 p.draw = function(){
     p.frameRate(60);
@@ -195,7 +202,7 @@ p.draw = function(){
     p.fill(255);
     earlyRangePoints.forEach(function(item, index){ 
         
-//        console.log(item.images);
+
         if(index === earlyRangePoints.length - 1 && lastReceived == 'Early life'){
             
             if((((item.time + item.diff) / 1000) * 60)> p.frameCount){
@@ -218,21 +225,44 @@ p.draw = function(){
                 
             }
         
-        if(averageMode == true){
-            p.ellipse(spacing * (index + 1), earlyAverage, 10, 10);
-        }else{
-            if(pressToPlayPos.length && pressToPlayPos[1] === spacing * (index + 1)){
-                    p.triangle(spacing * (index + 1) - 5, y - 5, 
-                               spacing * (index + 1) - 5, y + 5, 
-                               spacing * (index + 1) + 4, y);
-                }else{
-                    p.ellipse(spacing * (index + 1), y, 10, 10);
-                }
-        }
+        
+
+       
+            var matchingFilters = [];
+             item.themes.forEach(function(i, kIndex){
+                filters.forEach(function(f, iIndex){
+                    if(i === f){
+                        matchingFilters.push(i);
+                    }
+                });
+            });
+
+            
+            
+            quoteLog.push({x:spacing * (index + 1), y: y, quote:item.quote, themes: item.themes, time:item.time, stage:'early', images:item.images, filters: matchingFilters});
+
+            matchingFilters.forEach(function(i, iIndex){
+                p.fill(colors[i][0], colors[i][1], colors[i][2], circleOpacity);
+                p.ellipse(spacing * (index + 1), y, 10 + ((matchingFilters.length - iIndex) + 1) * 7, 10 + ((matchingFilters.length - iIndex) + 1) * 7);
+            });
+
+
+            p.fill(255);
+
+
+            if(averageMode == true){
+                p.ellipse(spacing * (index + 1), earlyAverage, 10, 10);
+            }else{
+                if(pressToPlayPos.length && pressToPlayPos[1] === spacing * (index + 1)){
+                        p.triangle(spacing * (index + 1) - 5, y - 5, 
+                                   spacing * (index + 1) - 5, y + 5, 
+                                   spacing * (index + 1) + 4, y);
+                    }else{
+                        p.ellipse(spacing * (index + 1), y, 10, 10);
+                    }
+            }
         
             
-            
-            quoteLog.push({x:spacing * (index + 1), y: y, quote:item.quote, themes: item.themes, time:item.time, stage:'early', images:item.images});
     });
     
     
@@ -250,6 +280,27 @@ p.draw = function(){
                 
             }
         
+            var matchingFilters = [];
+             item.themes.forEach(function(i, kIndex){
+                filters.forEach(function(f, iIndex){
+                    if(i === f){
+                        matchingFilters.push(i);
+                    }
+                });
+            });
+        
+        
+            quoteLog.push({x:spacing * (index + 1), y: y, quote:item.quote, themes: item.themes, time:item.time, stage:'diagnosis', images:item.images, filters: matchingFilters});
+    
+            matchingFilters.forEach(function(i, iIndex){
+                p.fill(colors[i][0], colors[i][1], colors[i][2], circleOpacity);
+                p.ellipse(spacing * (index + 1) + earlyLifeRange[1], y, 10 + ((matchingFilters.length - iIndex) + 1) * 7, 10 + ((matchingFilters.length - iIndex) + 1) * 7);
+            });
+
+
+            p.fill(255);
+
+
             if(averageMode == true){
                 p.ellipse(spacing * (index + 1) + earlyLifeRange[1], diagnosisAverage, 10, 10);
                 }else{
@@ -261,9 +312,9 @@ p.draw = function(){
                          p.ellipse(spacing * (index + 1) + earlyLifeRange[1], y, 10, 10);
                     }
             }
-        
-        
-            quoteLog.push({x:spacing * (index + 1), y: y, quote:item.quote, themes: item.themes, time:item.time, stage:'diagnosis', images:item.images});
+
+
+
     });
     
     crisisRangePoints.forEach(function(item, index){
@@ -276,7 +327,29 @@ p.draw = function(){
                  crisisAverage = crisisAveragePoints.reduce(function(sum, a,i,ar) { sum += a;  return i==ar.length-1?(ar.length==0?0:sum/ar.length):sum},0);
                 
             }
+
+            var matchingFilters = [];
+             item.themes.forEach(function(i, kIndex){
+                filters.forEach(function(f, iIndex){
+                    if(i === f){
+                        matchingFilters.push(i);
+                    }
+                });
+            });
             
+            
+        
+            quoteLog.push({x:spacing * (index + 1), y: y, quote:item.quote, themes: item.themes, time:item.time, stage:'crisis', images:item.images, filters: matchingFilters});
+    
+
+            matchingFilters.forEach(function(i, iIndex){
+                p.fill(colors[i][0], colors[i][1], colors[i][2], circleOpacity);
+                p.ellipse((spacing * (index + 1)) + diagnosisRange[1], y, 10 + ((matchingFilters.length - iIndex) + 1) * 7, 10 + ((matchingFilters.length - iIndex) + 1) * 7);
+            });
+
+
+            p.fill(255);
+
             if(averageMode == true){
                 p.ellipse((spacing * (index + 1)) + diagnosisRange[1], crisisAverage, 10, 10);
                 }else{
@@ -289,8 +362,7 @@ p.draw = function(){
                          p.ellipse((spacing * (index + 1)) + diagnosisRange[1], y, 10, 10);
                     }    
             }
-        
-            quoteLog.push({x:spacing * (index + 1), y: y, quote:item.quote, themes: item.themes, time:item.time, stage:'crisis', images:item.images});
+
     });
     
      survivingRangePoints.forEach(function(item, index){
@@ -303,7 +375,30 @@ p.draw = function(){
                  survivingAverage = survivingAveragePoints.reduce(function(sum, a,i,ar) { sum += a;  return i==ar.length-1?(ar.length==0?0:sum/ar.length):sum},0);
                 
             }
+
+            var matchingFilters = [];
+             item.themes.forEach(function(i, kIndex){
+                filters.forEach(function(f, iIndex){
+                    if(i === f){
+                        matchingFilters.push(i);
+                    }
+                });
+            });
          
+
+         
+            quoteLog.push({x:spacing * (index + 1), y: y, quote:item.quote, themes: item.themes, time:item.time, stage:'surviving', images:item.images, filters: matchingFilters});
+    
+
+            matchingFilters.forEach(function(i, iIndex){
+                p.fill(colors[i][0], colors[i][1], colors[i][2], circleOpacity);
+                p.ellipse((spacing * (index + 1)) + crisisRange[1], y, 10 + ((matchingFilters.length - iIndex) + 1) * 7, 10 + ((matchingFilters.length - iIndex) + 1) * 7);
+            });
+
+
+            p.fill(255);
+
+
             if(averageMode == true){
                 p.ellipse((spacing * (index + 1)) + crisisRange[1], survivingAverage, 10, 10);
                 }else{
@@ -315,8 +410,7 @@ p.draw = function(){
                           p.ellipse((spacing * (index + 1)) + crisisRange[1], y, 10, 10);
                     }     
             }
-         
-            quoteLog.push({x:spacing * (index + 1), y: y, quote:item.quote, themes: item.themes, time:item.time, stage:'surviving', images:item.images});
+
     });
 
     

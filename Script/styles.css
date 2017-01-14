@@ -44,3 +44,23 @@
 #defaultCanvas0{
    margin-left: 12.5%;
 }
+
+
+.filter{
+    font-family: 'avenir';
+    color: white;
+    background-color: grey;
+    width: 100px;
+    font-size: 10px;
+    padding: 3px;
+    margin: 5px;
+    position: absolute;
+}
+
+#filter-container{
+
+}
+
+
+
+

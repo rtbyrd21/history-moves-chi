@@ -6,6 +6,7 @@ var lyrics = [
     "stage": "",
     "overwrite": "",
     "themes": [],
+    "sub-themes": [],
     "images": ["1.png"]  
   },
   {
@@ -13,7 +14,8 @@ var lyrics = [
     "start": "00:20.00",
     "stage": "Early life",
     "overwrite": "growing, kind, like",
-    "themes": ["Childhood sexual assault", "Living with relatives", "From \"A-student\" to failing"],
+    "themes": ["family", "violence"],
+    "sub-themes": ["Childhood sexual assault", "Living with relatives", "From \"A-student\" to failing"],
     "images": [] 
   },
   {
@@ -21,7 +23,8 @@ var lyrics = [
     "start": "00:40.00",
     "stage": "Early life",
     "overwrite": "advantage",
-    "themes": ["Childhood sexual assault", "Lack of sex ed/info"],
+    "themes": ["violence"],
+    "sub-themes": ["Childhood sexual assault", "Lack of sex ed/info"],
     "images": ["2.png"] 
   },
   {
@@ -29,7 +32,8 @@ var lyrics = [
     "start": "00:61.00",
     "stage": "Diagnosis",
     "overwrite": "care",
-    "themes":["Childhood sexual assault", "Lack of sex ed/info", "Healing later as an adult"],
+    "themes": ["family", "house", "violence"],
+    "sub-themes":["Childhood sexual assault", "Lack of sex ed/info", "Healing later as an adult"],
     "images": []   
   },
   {
@@ -37,7 +41,8 @@ var lyrics = [
     "start": "01:43.00",
     "stage": "Early life",
     "overwrite": "",
-    "themes": [],
+    "themes": ["family", "violence"],
+    "sub-themes": [],
     "images": [] 
   },
   {
@@ -45,7 +50,8 @@ var lyrics = [
     "start": "02:17.00",
     "stage": "Early life",
     "overwrite": "",
-    "themes": [],
+    "themes": ["stigma", "house", "family", "violence"],
+    "sub-themes": [],
     "images": ["1.png"] 
   },
   {
@@ -53,7 +59,8 @@ var lyrics = [
     "start": "03:53.00",
     "stage": "Early life",
     "overwrite": "like, positive, best",
-    "themes": [],
+    "themes": ["family", "house"],
+    "sub-themes": [],
     "images": ["1.png"] 
   },
   {
@@ -61,7 +68,8 @@ var lyrics = [
     "start": "05:01.86",
     "stage": "Early life",
     "overwrite": "",
-    "themes": [],
+    "themes": ["family", "house", "neighborhood"],
+    "sub-themes": [],
     "images": ["3.png"] 
   },
   {
@@ -69,7 +77,8 @@ var lyrics = [
     "start": "06:12.00",
     "stage": "Early life",
     "overwrite": "",
-    "themes": [],
+    "themes": ["house"],
+    "sub-themes": [],
     "images": ["4.png"] 
   },
   {
@@ -77,7 +86,8 @@ var lyrics = [
     "start": "08:25.81",
     "stage": "Early life",
     "overwrite": "",
-    "themes": [],
+    "themes": ["family", "addiction"],
+    "sub-themes": [],
     "images": [] 
   },
   {
@@ -85,7 +95,8 @@ var lyrics = [
     "start": "09:13.00",
     "stage": "Early life",
     "overwrite": "",
-    "themes": [],
+    "themes": ["family", "addiction"],
+    "sub-themes": [],
     "images": [] 
   },
   {
@@ -93,7 +104,8 @@ var lyrics = [
     "start": "10:25.03",
     "stage": "Early life",
     "overwrite": "",
-    "themes": [],
+    "themes": ["addiction", "neighborhood"],
+    "sub-themes": [],
     "images": ["5.png"] 
   },
   {
@@ -101,7 +113,8 @@ var lyrics = [
     "start": "11:21.00",
     "stage": "Early life",
     "overwrite": "",
-    "themes": [],
+    "themes": ["addiction", "family"],
+    "sub-themes": [],
     "images": ["6.png"] 
   },
   {
@@ -109,7 +122,8 @@ var lyrics = [
     "start": "12:56.61",
     "stage": "Early life",
     "overwrite": "",
-    "themes": [],
+    "themes": ["family", "violence"],
+    "sub-themes": [],
     "images": [] 
   },
   {
@@ -117,7 +131,8 @@ var lyrics = [
     "start": "14:23.89",
     "stage": "Early life",
     "overwrite": "",
-    "themes": [],
+    "themes": ["violence"],
+    "sub-themes": [],
     "images": [] 
   },
   {
@@ -125,7 +140,8 @@ var lyrics = [
     "start": "14:59.00",
     "stage": "Early life",
     "overwrite": "",
-    "themes": [],
+    "themes": ["neighborhood"],
+    "sub-themes": [],
     "images": [] 
   },
   {
@@ -133,7 +149,8 @@ var lyrics = [
     "start": "15:46.50",
     "stage": "Diagnosis",
     "overwrite": "",
-    "themes": [],
+    "themes": ["addiction"],
+    "sub-themes": [],
     "images": ["7.png"] 
   },
   {
@@ -141,7 +158,8 @@ var lyrics = [
     "start": "16:33.24",
     "stage": "Diagnosis",
     "overwrite": "",
-    "themes": [],
+    "themes": ["family", "stigma"],
+    "sub-themes": [],
     "images": [] 
   },
   {
@@ -149,7 +167,8 @@ var lyrics = [
     "start": "17:50.50",
     "stage": "Diagnosis",
     "overwrite": "",
-    "themes": [],
+    "themes": ["system", "stigma"],
+    "sub-themes": [],
     "images": [] 
   },
   {
@@ -157,7 +176,8 @@ var lyrics = [
     "start": "18:30.00",
     "stage": "Diagnosis",
     "overwrite": "",
-    "themes": [],
+    "themes": ["stigma"],
+    "sub-themes": [],
     "images": [] 
   },
   {
@@ -165,7 +185,8 @@ var lyrics = [
     "start": "19:38.00",
     "stage": "Crisis",
     "overwrite": "",
-    "themes": [],
+    "themes": ["family", "violence"],
+    "sub-themes": [],
     "images": [] 
   },
   {
@@ -173,7 +194,8 @@ var lyrics = [
     "start": "20:14.50",
     "stage": "Diagnosis",
     "overwrite": "",
-    "themes": [],
+    "themes": ["system"],
+    "sub-themes": [],
     "images": [] 
   },
   {
@@ -181,7 +203,8 @@ var lyrics = [
     "start": "21:29.21",
     "stage": "Crisis",
     "overwrite": "",
-    "themes": [],
+    "themes": ["family", "system"],
+    "sub-themes": [],
     "images": [] 
   },
   {
@@ -190,6 +213,7 @@ var lyrics = [
     "stage": "Still surviving",
     "overwrite": "",
     "themes": [],
+    "sub-themes": [],
     "images": [] 
   },
   {
@@ -198,6 +222,7 @@ var lyrics = [
     "stage": "Diagnosis",
     "overwrite": "",
     "themes": [],
+    "sub-themes": [],
     "images": [] 
   },
   {
@@ -205,7 +230,8 @@ var lyrics = [
     "start": "24:00.67",
     "stage": "Still surviving",
     "overwrite": "",
-    "themes": [],
+    "themes": ["system", "family"],
+    "sub-themes": [],
     "images": [] 
   },
   {
@@ -214,6 +240,7 @@ var lyrics = [
     "stage": "Still surviving",
     "overwrite": "",
     "themes": [],
+    "sub-themes": [],
     "images": [] 
   },
   {
@@ -222,6 +249,7 @@ var lyrics = [
     "stage": "Diagnosis",
     "overwrite": "",
     "themes": [],
+    "sub-themes": [],
     "images": [] 
   },
   {
@@ -229,7 +257,8 @@ var lyrics = [
     "start": "26:43.75",
     "stage": "Still surviving",
     "overwrite": "",
-    "themes": [],
+    "themes": ["system", "stigma"],
+    "sub-themes": [],
     "images": [] 
   },
   {
@@ -237,7 +266,8 @@ var lyrics = [
     "start": "27:15.00",
     "stage": "Still surviving",
     "overwrite": "",
-    "themes": [],
+    "themes": ["system", "stigma"],
+    "sub-themes": [],
     "images": [] 
   },
   {
@@ -246,6 +276,7 @@ var lyrics = [
     "stage": "Still surviving",
     "overwrite": "",
     "themes": [],
+    "sub-themes": [],
     "images": ["6.png"] 
   },
   {
@@ -253,7 +284,8 @@ var lyrics = [
     "start": "28:24.84",
     "stage": "Still surviving",
     "overwrite": "",
-    "themes": [],
+    "themes": ["family"],
+    "sub-themes": [],
     "images": [] 
   },
   {
@@ -261,7 +293,8 @@ var lyrics = [
     "start": "30:01.91",
     "stage": "Still surviving",
     "overwrite": "",
-    "themes": [],
+    "themes": ["family"],
+    "sub-themes": [],
     "images": [] 
   },
   {
@@ -269,7 +302,8 @@ var lyrics = [
     "start": "31:03.00",
     "stage": "Early life",
     "overwrite": "",
-    "themes": [],
+    "themes": ["family", "stigma"],
+    "sub-themes": [],
     "images": ["7.png"] 
   },
   {
@@ -278,6 +312,7 @@ var lyrics = [
     "stage": "Still surviving",
     "overwrite": "",
     "themes": [],
+    "sub-themes": [],
     "images": [] 
   },
   {
@@ -285,7 +320,8 @@ var lyrics = [
     "start": "34:44.00",
     "stage": "Still surviving",
     "overwrite": "",
-    "themes": [],
+    "themes": ["family"],
+    "sub-themes": [],
     "images": [] 
   },
   {
@@ -293,7 +329,8 @@ var lyrics = [
     "start": "36:24.20",
     "stage": "Still surviving",
     "overwrite": "",
-    "themes": [],
+    "themes": ["stigma"],
+    "sub-themes": [],
     "images": [] 
   },
   {
@@ -302,6 +339,7 @@ var lyrics = [
     "stage": "Still surviving",
     "overwrite": "",
     "themes": [],
+    "sub-themes": [],
     "images": [] 
   },
   {
@@ -309,7 +347,8 @@ var lyrics = [
     "start": "04:02.00",
     "stage": "Still surviving",
     "overwrite": "like",
-    "themes": [],
+    "themes": ["neighborhood", "poverty"],
+    "sub-themes": [],
     "images": ["5.png"] 
   },
   {
@@ -318,6 +357,7 @@ var lyrics = [
     "stage": "Still surviving",
     "overwrite": "like, positive",
     "themes": [],
+    "sub-themes": [],
     "images": [] 
   },
   {
@@ -326,6 +366,7 @@ var lyrics = [
     "stage": "Still surviving",
     "overwrite": "",
     "themes": [],
+    "sub-themes": [],
     "images": [] 
   },
   {
@@ -333,7 +374,8 @@ var lyrics = [
     "start": "06:18.52",
     "stage": "Still surviving",
     "overwrite": "",
-    "themes": [],
+    "themes": ["addiction"],
+    "sub-themes": [],
     "images": [] 
   },
   {
@@ -342,6 +384,7 @@ var lyrics = [
     "stage": "Still surviving",
     "overwrite": "",
     "themes": [],
+    "sub-themes": [],
     "images": [] 
   },
   {
@@ -350,6 +393,7 @@ var lyrics = [
     "stage": "Still surviving",
     "overwrite": "",
     "themes": [],
+    "sub-themes": [],
     "images": [] 
   },
   {
@@ -358,6 +402,7 @@ var lyrics = [
     "stage": "Still surviving",
     "overwrite": "",
     "themes": [],
+    "sub-themes": [],
     "images": [] 
   },
   {
@@ -365,7 +410,8 @@ var lyrics = [
     "start": "10:47.00",
     "stage": "Still surviving",
     "overwrite": "",
-    "themes": [],
+    "themes": ["neighborhood"],
+    "sub-themes": [],
     "images": [] 
   },
   {
@@ -373,7 +419,8 @@ var lyrics = [
     "start": "11:44.15",
     "stage": "Still surviving",
     "overwrite": "",
-    "themes": [],
+    "themes": ["system"],
+    "sub-themes": [],
     "images": [] 
   }
 ]
