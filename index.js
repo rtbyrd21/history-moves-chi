@@ -63,7 +63,7 @@ app.post('/api/text', function (req, res) {
   count[req.body.stage]++; 
         
          
-  res.send({data:sentiment(req.body.data, log),stage:req.body.stage, count: count[req.body.stage], quote:req.body.data, diff:req.body.diff, time:req.body.time, theme:req.body.themes, images:req.body.images});
+  res.send({data:sentiment(req.body.data, log),stage:req.body.stage, count: count[req.body.stage], quote:req.body.data, diff:req.body.diff, time:req.body.time, theme:req.body.themes, images:req.body.images, subThemes:req.body.subThemes});
 });
 
 

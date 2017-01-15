@@ -81,12 +81,19 @@ p.setup = function(){
     visHeight = 300;
     var decraments = {};
     var stages = [];
+    var subThemes = [];
     $.each(lyrics[0], function (index, value) {
         if(value.stage){
             stages.push(value.stage);
         }
+        if(value.subThemes.length){
+            subThemes = $.unique($.merge(subThemes, value.subThemes));
+        }
     });
-    
+
+    $rootScope.subThemes = $.unique(subThemes);
+    $rootScope.$apply();
+
     earlyLife = stages.filter(function(x){return x=="Early life"}).length;
     diagnosis = stages.filter(function(x){return x=="Diagnosis"}).length;
     crisis = stages.filter(function(x){return x=="Crisis"}).length;
@@ -132,18 +139,18 @@ p.setup = function(){
             
             
             if(data.stage === 'Early life'){
-              earlyRangePoints.push({score:data.data.score, quote:data.quote, diff:data.diff, time:data.time, themes:data.theme, images: data.images});  
+              earlyRangePoints.push({score:data.data.score, quote:data.quote, diff:data.diff, time:data.time, themes:data.theme, images: data.images, subThemes: data.subThemes});  
             }
             if(data.stage === 'Diagnosis'){
-                diagnosisRangePoints.push({score:data.data.score, quote:data.quote, diff:data.diff, time:data.time, themes:data.theme, images: data.images});   
+                diagnosisRangePoints.push({score:data.data.score, quote:data.quote, diff:data.diff, time:data.time, themes:data.theme, images: data.images, subThemes: data.subThemes});   
             }
             if(data.stage === 'Crisis'){
-                crisisRangePoints.push({score:data.data.score, quote:data.quote, diff:data.diff, time:data.time, themes:data.theme, images: data.images}); 
+                crisisRangePoints.push({score:data.data.score, quote:data.quote, diff:data.diff, time:data.time, themes:data.theme, images: data.images, subThemes: data.subThemes}); 
                 
             }
             
             if(data.stage === 'Still surviving'){                
-                survivingRangePoints.push({score:data.data.score, quote:data.quote, diff:data.diff, time:data.time, themes:data.theme, images: data.images}); 
+                survivingRangePoints.push({score:data.data.score, quote:data.quote, diff:data.diff, time:data.time, themes:data.theme, images: data.images, subThemes: data.subThemes}); 
                 
             }
             
@@ -239,7 +246,7 @@ p.draw = function(){
 
             
             
-            quoteLog.push({x:spacing * (index + 1), y: y, quote:item.quote, themes: item.themes, time:item.time, stage:'early', images:item.images, filters: matchingFilters});
+            quoteLog.push({x:spacing * (index + 1), y: y, quote:item.quote, themes: item.themes, time:item.time, stage:'early', images:item.images, filters: matchingFilters, subThemes: item.subThemes});
 
             matchingFilters.forEach(function(i, iIndex){
                 p.fill(colors[i][0], colors[i][1], colors[i][2], circleOpacity);
@@ -290,7 +297,7 @@ p.draw = function(){
             });
         
         
-            quoteLog.push({x:spacing * (index + 1), y: y, quote:item.quote, themes: item.themes, time:item.time, stage:'diagnosis', images:item.images, filters: matchingFilters});
+            quoteLog.push({x:spacing * (index + 1), y: y, quote:item.quote, themes: item.themes, time:item.time, stage:'diagnosis', images:item.images, filters: matchingFilters, subThemes: item.subThemes});
     
             matchingFilters.forEach(function(i, iIndex){
                 p.fill(colors[i][0], colors[i][1], colors[i][2], circleOpacity);
@@ -339,7 +346,7 @@ p.draw = function(){
             
             
         
-            quoteLog.push({x:spacing * (index + 1), y: y, quote:item.quote, themes: item.themes, time:item.time, stage:'crisis', images:item.images, filters: matchingFilters});
+            quoteLog.push({x:spacing * (index + 1), y: y, quote:item.quote, themes: item.themes, time:item.time, stage:'crisis', images:item.images, filters: matchingFilters, subThemes: item.subThemes});
     
 
             matchingFilters.forEach(function(i, iIndex){
@@ -387,7 +394,7 @@ p.draw = function(){
          
 
          
-            quoteLog.push({x:spacing * (index + 1), y: y, quote:item.quote, themes: item.themes, time:item.time, stage:'surviving', images:item.images, filters: matchingFilters});
+            quoteLog.push({x:spacing * (index + 1), y: y, quote:item.quote, themes: item.themes, time:item.time, stage:'surviving', images:item.images, filters: matchingFilters, subThemes: item.subThemes});
     
 
             matchingFilters.forEach(function(i, iIndex){
@@ -476,6 +483,7 @@ p.draw = function(){
             pressToPlayPos = [index, playX, item.y];
             $rootScope.displayDescription--;
             $rootScope.$broadcast('quoteMarkerHover', {quote: item.quote, images: item.images});
+            $rootScope.$broadcast('subThemes', {subThemes: item.subThemes, stage:item.stage});
             item.themes.forEach(function(i,index){
                 p.fill(50);
                 p.textAlign(p.CENTER);
@@ -539,7 +547,7 @@ $.each(lyrics[0], function (index, value) {
     
     setTimeout(function(){
          getQuoteData(quote, time, value.stage, value.overwrite, lyrics[0][index]['diff'], value.themes,
-                      value.images, index);
+                      value.images, value.subThemes, index);
     },100);
    
     
@@ -548,7 +556,7 @@ $.each(lyrics[0], function (index, value) {
 
     
 
-function getQuoteData(quote, time, stage, overwrite, difference, themes, images, index){
+function getQuoteData(quote, time, stage, overwrite, difference, themes, images, subThemes, index){
     var diff = 0;
     if(index != 0 && index != lyrics[0].length - 1){
         diff = lyrics[0][index + 1]['diff'] - lyrics[0][index]['diff'];
@@ -557,7 +565,7 @@ function getQuoteData(quote, time, stage, overwrite, difference, themes, images,
     }
 
     setTimeout(function() {  
-        $rootScope.sendData(quote, overwrite, stage, diff, time, themes, images);
+        $rootScope.sendData(quote, overwrite, stage, diff, time, themes, images, subThemes);
     }, (time * 1) / 100); 
 }
 

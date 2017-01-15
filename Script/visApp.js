@@ -2,14 +2,15 @@ var app = angular.module("visApp", ['ngAnimate']);
 
 app.controller("VisualizationCtrl", function($scope, $rootScope, $timeout, $http) {
     
-      $rootScope.sendData = function (quote, words, stage, difference, time, themes, images) {
+      $rootScope.sendData = function (quote, words, stage, difference, time, themes, images, subThemes) {
             var data = {data: quote,
                        overwrite: words,
                        stage: stage,
                        diff: difference,
                        time: time,
                        themes: themes,
-                       images: images};    
+                       images: images,
+                       subThemes: subThemes};    
             $http.post('/api/text', data)
             .success(function (data, status, headers, config) {
                 $rootScope.$broadcast('quoteReceived', data);
@@ -46,6 +47,13 @@ function rgbToHex(r, g, b) {
 ];
 
 
+        $rootScope.stageColors = {
+          'early' : '0,209,193',
+          'diagnosis' : '123,0,81',
+          'crisis' : '255,180,0',
+          'surviving' : '255,170,145'
+                  };
+
         $rootScope.filters = [];
     
         
@@ -60,7 +68,6 @@ function rgbToHex(r, g, b) {
             }else{
               $rootScope.filters.splice($rootScope.filters.indexOf(i), 1);
             }
-            console.log($rootScope.filters);
           }
         }
 
@@ -76,6 +83,21 @@ function rgbToHex(r, g, b) {
                 $scope.$apply();
             }
             
+        });
+
+        $rootScope.$on('subThemes', function(event, data){
+          $rootScope.relevantThemes = data.subThemes;
+          $rootScope.subThemeColor = $rootScope.stageColors[data.stage];
+          console.log($rootScope.subThemeColor);
+          data.subThemes.forEach(function(i, index){
+            $rootScope.subThemes.forEach(function(j, jIndex){
+              if(i == j){
+                $rootScope.subThemes.splice(jIndex, 1);
+                $rootScope.subThemes.unshift(j);
+                $rootScope.$apply();
+              }
+            });
+          })
         });
     
     

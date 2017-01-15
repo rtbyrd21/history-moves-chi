@@ -31,8 +31,15 @@
           <div id="image-container" ng-show="showDescription" ng-if="images"><img ng-src="{{images}}"/></div>
       </div>
 
-      <div id="filter-container" ng-repeat="i in colors">
-        <div class="filter" ng-click="toggleFilter(i[0])" ng-style="{'top': {{$index * 25}} + 'px', 'background-color': (filters.indexOf(i[0]) > - 1) ? {{i[1]}} : 'grey'  }">{{i[0]}}</div>
+      <div id="filter-container" >
+        <div ng-repeat="i in colors" class="filter" ng-click="toggleFilter(i[0])" ng-style="{'top': {{$index * 25}} + 'px', 'background-color': (filters.indexOf(i[0]) > - 1) ? {{i[1]}} : 'grey'  }">{{i[0]}}</div>
+      </div>
+
+      <div id="sub-themes">
+          <div ng-animate="'animate'" class="filter" ng-repeat="i in subThemes track by $index"
+          ng-style="{'background-color': relevantThemes.indexOf(i) > -1 ? 'rgb(' + subThemeColor + ')': 'grey',
+                    'opacity': relevantThemes.indexOf(i) > -1 ? '1' : '.25'}"
+          >{{i}}</div>
       </div>
 
   </body>

@@ -6,7 +6,7 @@ var lyrics = [
     "stage": "",
     "overwrite": "",
     "themes": [],
-    "sub-themes": [],
+    "subThemes": [],
     "images": ["1.png"]  
   },
   {
@@ -15,7 +15,7 @@ var lyrics = [
     "stage": "Early life",
     "overwrite": "growing, kind, like",
     "themes": ["family", "violence"],
-    "sub-themes": ["Childhood sexual assault", "Living with relatives", "From \"A-student\" to failing"],
+    "subThemes": ["Childhood sexual assault", "Living with relatives", "From \"A-student\" to failing"],
     "images": [] 
   },
   {
@@ -24,7 +24,7 @@ var lyrics = [
     "stage": "Early life",
     "overwrite": "advantage",
     "themes": ["violence"],
-    "sub-themes": ["Childhood sexual assault", "Lack of sex ed/info"],
+    "subThemes": ["Childhood sexual assault", "Lack of sex ed/info"],
     "images": ["2.png"] 
   },
   {
@@ -33,7 +33,7 @@ var lyrics = [
     "stage": "Diagnosis",
     "overwrite": "care",
     "themes": ["family", "house", "violence"],
-    "sub-themes":["Childhood sexual assault", "Lack of sex ed/info", "Healing later as an adult"],
+    "subThemes":["Childhood sexual assault", "Lack of sex ed/info", "Healing later as an adult"],
     "images": []   
   },
   {
@@ -42,7 +42,7 @@ var lyrics = [
     "stage": "Early life",
     "overwrite": "",
     "themes": ["family", "violence"],
-    "sub-themes": [],
+    "subThemes": ["Childhood sexual assault", "Living with relatives", "Family in the South, Moving a lot"],
     "images": [] 
   },
   {
@@ -51,7 +51,7 @@ var lyrics = [
     "stage": "Early life",
     "overwrite": "",
     "themes": ["stigma", "house", "family", "violence"],
-    "sub-themes": [],
+    "subThemes": ["Childhood sexual assault", "Lack of sex ed/info", "Victim becoming perpetrater, Moving a lot"],
     "images": ["1.png"] 
   },
   {
@@ -60,7 +60,7 @@ var lyrics = [
     "stage": "Early life",
     "overwrite": "like, positive, best",
     "themes": ["family", "house"],
-    "sub-themes": [],
+    "subThemes": ["Childhood sexual assault", "Running away from home"],
     "images": ["1.png"] 
   },
   {
@@ -69,7 +69,7 @@ var lyrics = [
     "stage": "Early life",
     "overwrite": "",
     "themes": ["family", "house", "neighborhood"],
-    "sub-themes": [],
+    "subThemes": ["Living with relatives", "Running away from home", "In the streets", "Family members' addiction, Nowhere else to go"],
     "images": ["3.png"] 
   },
   {
@@ -78,7 +78,7 @@ var lyrics = [
     "stage": "Early life",
     "overwrite": "",
     "themes": ["house"],
-    "sub-themes": [],
+    "subThemes": ["Living with relatives", "Running away from home"],
     "images": ["4.png"] 
   },
   {
@@ -87,7 +87,7 @@ var lyrics = [
     "stage": "Early life",
     "overwrite": "",
     "themes": ["family", "addiction"],
-    "sub-themes": [],
+    "subThemes": ["Living with relatives", "Family members' addiction", "Alcohol, Marijuana"],
     "images": [] 
   },
   {
@@ -96,7 +96,7 @@ var lyrics = [
     "stage": "Early life",
     "overwrite": "",
     "themes": ["family", "addiction"],
-    "sub-themes": [],
+    "subThemes": ["Family members' addiction", "Family members' HIV", "Addiction, T's and blues", "Cocaine"],
     "images": [] 
   },
   {
@@ -105,7 +105,7 @@ var lyrics = [
     "stage": "Early life",
     "overwrite": "",
     "themes": ["addiction", "neighborhood"],
-    "sub-themes": [],
+    "subThemes": ["In the streets", "Dropping out of school", "Addiction", "Healing later as an adult"],
     "images": ["5.png"] 
   },
   {
@@ -114,7 +114,7 @@ var lyrics = [
     "stage": "Early life",
     "overwrite": "",
     "themes": ["addiction", "family"],
-    "sub-themes": [],
+    "subThemes": ["Intergenerational trauma", "In the streets", "Moving a lot", "Addiction", "Church", "Spirituality"],
     "images": ["6.png"] 
   },
   {
@@ -123,7 +123,7 @@ var lyrics = [
     "stage": "Early life",
     "overwrite": "",
     "themes": ["family", "violence"],
-    "sub-themes": [],
+    "subThemes": [],
     "images": [] 
   },
   {
@@ -132,7 +132,7 @@ var lyrics = [
     "stage": "Early life",
     "overwrite": "",
     "themes": ["violence"],
-    "sub-themes": [],
+    "subThemes": ["Parenting", "Childhood sexual assault", "Intergenerational trauma", "Lack of sex ed/info, Healing later as an adult"],
     "images": [] 
   },
   {
@@ -141,7 +141,7 @@ var lyrics = [
     "stage": "Early life",
     "overwrite": "",
     "themes": ["neighborhood"],
-    "sub-themes": [],
+    "subThemes": ["Parenting", "Childhood sexual assault"],
     "images": [] 
   },
   {
@@ -150,7 +150,7 @@ var lyrics = [
     "stage": "Diagnosis",
     "overwrite": "",
     "themes": ["addiction"],
-    "sub-themes": [],
+    "subThemes": ["Parenting", "Childhood sexual assault", "Intergenerational trauma"],
     "images": ["7.png"] 
   },
   {
@@ -159,7 +159,7 @@ var lyrics = [
     "stage": "Diagnosis",
     "overwrite": "",
     "themes": ["family", "stigma"],
-    "sub-themes": [],
+    "subThemes": ["Diagnosis as turning point", "Getting clean"],
     "images": [] 
   },
   {
@@ -168,7 +168,7 @@ var lyrics = [
     "stage": "Diagnosis",
     "overwrite": "",
     "themes": ["system", "stigma"],
-    "sub-themes": [],
+    "subThemes": ["Diagnosed via pregnancy/childbirth", "No one explained diagnosis to me", "Didn’t know anything about HIV"],
     "images": [] 
   },
   {
@@ -177,7 +177,7 @@ var lyrics = [
     "stage": "Diagnosis",
     "overwrite": "",
     "themes": ["stigma"],
-    "sub-themes": [],
+    "subThemes": ["Addiction", "HIV was a \"gay man's disease\"", "Sharing needles", "Sex work", "Didn’t know anything about HIV", "Partner had HIV/AIDS", "Coming out as lesbian"],
     "images": [] 
   },
   {
@@ -186,7 +186,7 @@ var lyrics = [
     "stage": "Crisis",
     "overwrite": "",
     "themes": ["family", "violence"],
-    "sub-themes": [],
+    "subThemes": ["Parenting", "Childhood sexual assault", "Intergenerational trauma", "Sex work", "Left children with friends/family"],
     "images": [] 
   },
   {
@@ -195,7 +195,7 @@ var lyrics = [
     "stage": "Diagnosis",
     "overwrite": "",
     "themes": ["system"],
-    "sub-themes": [],
+    "subThemes": ["Diagnosed in jail/prison", "Didn’t know anything about HIV", "Left children with friends/family", "Fantus clinic", "DCFS", "Threat of kids taken away", "Educated about HIV and rights"],
     "images": [] 
   },
   {
@@ -204,7 +204,7 @@ var lyrics = [
     "stage": "Crisis",
     "overwrite": "",
     "themes": ["family", "system"],
-    "sub-themes": [],
+    "subThemes": ["Threat of kids taken away", "Fighting to get kids back", "Stroger as a turning point"],
     "images": [] 
   },
   {
@@ -213,7 +213,7 @@ var lyrics = [
     "stage": "Still surviving",
     "overwrite": "",
     "themes": [],
-    "sub-themes": [],
+    "subThemes": ["Radiation center", "Women with HIV now dying of cancer",  "Women's clinic a \"hole in the wall\""],
     "images": [] 
   },
   {
@@ -222,7 +222,7 @@ var lyrics = [
     "stage": "Diagnosis",
     "overwrite": "",
     "themes": [],
-    "sub-themes": [],
+    "subThemes": ["Women's clinic a \"hole in the wall\"", "Clinic as a safe space"],
     "images": [] 
   },
   {
@@ -231,7 +231,7 @@ var lyrics = [
     "stage": "Still surviving",
     "overwrite": "",
     "themes": ["system", "family"],
-    "sub-themes": [],
+    "subThemes": ["Stroger as a turning point", "Parenting class thru Stroger", "Pride in choosing", "doing it for me"],
     "images": [] 
   },
   {
@@ -240,7 +240,7 @@ var lyrics = [
     "stage": "Still surviving",
     "overwrite": "",
     "themes": [],
-    "sub-themes": [],
+    "subThemes": ["Friends & mentors lost to AIDS", "Mentors/role models at Stroger"],
     "images": [] 
   },
   {
@@ -249,7 +249,7 @@ var lyrics = [
     "stage": "Diagnosis",
     "overwrite": "",
     "themes": [],
-    "sub-themes": [],
+    "subThemes": ["Mentors/role models at Stroger"],
     "images": [] 
   },
   {
@@ -258,7 +258,7 @@ var lyrics = [
     "stage": "Still surviving",
     "overwrite": "",
     "themes": ["system", "stigma"],
-    "sub-themes": [],
+    "subThemes": ["Volunteering related to HIV/AIDS, AIDS patients shunned"],
     "images": [] 
   },
   {
@@ -267,7 +267,7 @@ var lyrics = [
     "stage": "Still surviving",
     "overwrite": "",
     "themes": ["system", "stigma"],
-    "sub-themes": [],
+    "subThemes": ["Volunteering related to HIV/AIDS", "AIDS patients shunned", "Activism"],
     "images": [] 
   },
   {
@@ -276,7 +276,7 @@ var lyrics = [
     "stage": "Still surviving",
     "overwrite": "",
     "themes": [],
-    "sub-themes": [],
+    "subThemes": ["Going back to school as an adult", "Activism"],
     "images": ["6.png"] 
   },
   {
@@ -285,7 +285,7 @@ var lyrics = [
     "stage": "Still surviving",
     "overwrite": "",
     "themes": ["family"],
-    "sub-themes": [],
+    "subThemes": ["Educating next generation about HIV"],
     "images": [] 
   },
   {
@@ -294,7 +294,7 @@ var lyrics = [
     "stage": "Still surviving",
     "overwrite": "",
     "themes": ["family"],
-    "sub-themes": [],
+    "subThemes": ["Educating next generation about HIV"],
     "images": [] 
   },
   {
@@ -303,7 +303,7 @@ var lyrics = [
     "stage": "Early life",
     "overwrite": "",
     "themes": ["family", "stigma"],
-    "sub-themes": [],
+    "subThemes": ["Coming out as lesbian"],
     "images": ["7.png"] 
   },
   {
@@ -312,7 +312,7 @@ var lyrics = [
     "stage": "Still surviving",
     "overwrite": "",
     "themes": [],
-    "sub-themes": [],
+    "subThemes": ["Racism", "HIV stigma"],
     "images": [] 
   },
   {
@@ -321,7 +321,7 @@ var lyrics = [
     "stage": "Still surviving",
     "overwrite": "",
     "themes": ["family"],
-    "sub-themes": [],
+    "subThemes": ["Joy in family relationships", "Family acceptance of illness", "Non-judgmental family"],
     "images": [] 
   },
   {
@@ -330,7 +330,7 @@ var lyrics = [
     "stage": "Still surviving",
     "overwrite": "",
     "themes": ["stigma"],
-    "sub-themes": [],
+    "subThemes": ["Kids these days"],
     "images": [] 
   },
   {
@@ -339,7 +339,7 @@ var lyrics = [
     "stage": "Still surviving",
     "overwrite": "",
     "themes": [],
-    "sub-themes": [],
+    "subThemes": ["Kids these days, Youth feeling invincible", "Kids: take responsibility for safe sex!", "PreP"],
     "images": [] 
   },
   {
@@ -348,7 +348,7 @@ var lyrics = [
     "stage": "Still surviving",
     "overwrite": "like",
     "themes": ["neighborhood", "poverty"],
-    "sub-themes": [],
+    "subThemes": ["Kids: take responsibility for safe sex!", "Current societal issues"],
     "images": ["5.png"] 
   },
   {
@@ -357,7 +357,7 @@ var lyrics = [
     "stage": "Still surviving",
     "overwrite": "like, positive",
     "themes": [],
-    "sub-themes": [],
+    "subThemes": ["Youth feeling invincible", "Kids: take responsibility for safe sex!", "Current societal issues", "Youth/community needs role models"],
     "images": [] 
   },
   {
@@ -366,7 +366,7 @@ var lyrics = [
     "stage": "Still surviving",
     "overwrite": "",
     "themes": [],
-    "sub-themes": [],
+    "subThemes": ["Youth/community needs role models"],
     "images": [] 
   },
   {
@@ -375,7 +375,7 @@ var lyrics = [
     "stage": "Still surviving",
     "overwrite": "",
     "themes": ["addiction"],
-    "sub-themes": [],
+    "subThemes": ["Importance of research"],
     "images": [] 
   },
   {
@@ -384,7 +384,7 @@ var lyrics = [
     "stage": "Still surviving",
     "overwrite": "",
     "themes": [],
-    "sub-themes": [],
+    "subThemes": ["Youth/community needs role models", "Importance of research", "Not afraid anymore"],
     "images": [] 
   },
   {
@@ -393,7 +393,7 @@ var lyrics = [
     "stage": "Still surviving",
     "overwrite": "",
     "themes": [],
-    "sub-themes": [],
+    "subThemes": ["Volunteering related to HIV/AIDS", "Activism"],
     "images": [] 
   },
   {
@@ -402,7 +402,7 @@ var lyrics = [
     "stage": "Still surviving",
     "overwrite": "",
     "themes": [],
-    "sub-themes": [],
+    "subThemes": ["Diagnosis as turning point", "Volunteering related to HIV/AIDS", "Activism"],
     "images": [] 
   },
   {
@@ -411,7 +411,7 @@ var lyrics = [
     "stage": "Still surviving",
     "overwrite": "",
     "themes": ["neighborhood"],
-    "sub-themes": [],
+    "subThemes": ["Activism"],
     "images": [] 
   },
   {
@@ -420,7 +420,7 @@ var lyrics = [
     "stage": "Still surviving",
     "overwrite": "",
     "themes": ["system"],
-    "sub-themes": [],
+    "subThemes": ["Activism", "Need more U.S. HIV/AIDS funding"],
     "images": [] 
   }
 ]
