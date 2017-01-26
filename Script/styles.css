@@ -46,6 +46,11 @@
 }
 
 
+#filter-container{
+    /*top: 52%;*/
+    position: absolute;
+}
+
 .filter{
     font-family: 'avenir';
     color: white;
@@ -54,7 +59,9 @@
     font-size: 10px;
     padding: 3px;
     margin: 5px;
+    /*display: inline-block;*/
     position: absolute;
+    
 }
 
 #sub-themes{
@@ -107,6 +114,33 @@
     width: 150px;
     height: 30px;
 }
+/*
+d3
+*/
 
+.node {
+  cursor: pointer;
+}
 
+.node circle {
+  fill: #fff;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}
+
+.node text {
+  font: 10px sans-serif;
+}
+
+.link {
+  fill: none;
+  stroke: #ccc;
+  stroke-width: 1.5px;
+}
+
+#tree{
+    position: absolute;
+    top: 65%;
+    left: 0%;
+}
 

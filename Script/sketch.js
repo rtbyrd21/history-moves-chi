@@ -429,29 +429,43 @@ p.draw = function(){
     p.textAlign(p.LEFT);
     p.text('average', 5, p.windowHeight - 20);
     p.textAlign(p.CENTER);
-    p.fill(0,209,193);
-    p.rect(0, visHeight - 5, earlyLifeContainer * visWidth, 5);
-    
+    // p.fill(0,209,193);
+    p.noFill();
+    p.stroke(0);
+    // p.rect(0, visHeight - 5, earlyLifeContainer * visWidth, 5);
+    p.line(0,0,0,visHeight - 5);
+    p.line(earlyLifeContainer * visWidth,0, earlyLifeContainer * visWidth, visHeight - 5);
+    p.noStroke();
     
     
     p.fill(50);
     p.text('diagnosis', (earlyLifeContainer * visWidth) + ((diagnosisContainer * visWidth) / 2), visHeight + 20);
     p.fill(123,0,81);
-    p.rect(earlyLifeContainer * visWidth, visHeight - 5, diagnosisContainer * visWidth, 5);
-    
-    
+    // p.rect(earlyLifeContainer * visWidth, visHeight - 5, diagnosisContainer * visWidth, 5);
+    p.stroke(0);
+    p.line((earlyLifeContainer * visWidth) + (diagnosisContainer * visWidth), 0, (earlyLifeContainer * visWidth) + (diagnosisContainer * visWidth), visHeight - 5);
+    p.noStroke();
+
+
     p.fill(50);
     p.text('crisis', ((diagnosisContainer + earlyLifeContainer) * visWidth) + (crisisContainer * (visWidth/2)), visHeight + 20);
     p.fill(255,180,0);
-    p.rect((diagnosisContainer + earlyLifeContainer) * visWidth, visHeight - 5, crisisContainer * visWidth, 5);
-    
+    // p.rect((diagnosisContainer + earlyLifeContainer) * visWidth, visHeight - 5, crisisContainer * visWidth, 5);
+    p.stroke(0);
+    p.line((earlyLifeContainer * visWidth) + (diagnosisContainer * visWidth) + (crisisContainer * visWidth), 0, (earlyLifeContainer * visWidth) + (diagnosisContainer * visWidth) + (crisisContainer * visWidth), visHeight - 5);
+    p.noStroke();
     
     
     p.fill(50);
     p.text('surviving', ((diagnosisContainer + earlyLifeContainer + crisisContainer) * visWidth) + ((stillSurvivingContainer * visWidth) / 2), visHeight + 20);
     p.fill(255,170,145);
-    p.rect((diagnosisContainer + earlyLifeContainer + crisisContainer) * visWidth, visHeight - 5, stillSurvivingContainer * visWidth, 5);
+    // p.rect((diagnosisContainer + earlyLifeContainer + crisisContainer) * visWidth, visHeight - 5, stillSurvivingContainer * visWidth, 5);
     
+    p.stroke(0);
+    p.line((earlyLifeContainer * visWidth) + (diagnosisContainer * visWidth) + (crisisContainer * visWidth) + (stillSurvivingContainer * visWidth) - 1, 0, (earlyLifeContainer * visWidth) + (diagnosisContainer * visWidth) + (crisisContainer * visWidth) + (stillSurvivingContainer * visWidth) - 1, visHeight - 5);
+    p.noStroke();    
+
+
 //    p.strokeWeight(2);
 //    p.stroke(120);
 //    var interviewPercentage = p.map(p.frameCount, 0, 14000000, 0, visWidth);
@@ -484,11 +498,49 @@ p.draw = function(){
             $rootScope.displayDescription--;
             $rootScope.$broadcast('quoteMarkerHover', {quote: item.quote, images: item.images});
             $rootScope.$broadcast('subThemes', {subThemes: item.subThemes, stage:item.stage});
-            item.themes.forEach(function(i,index){
-                p.fill(50);
-                p.textAlign(p.CENTER);
-                p.text(i,item.x,item.y + ((index + 1) * 19));
-            });
+            // console.log(item.subThemes);
+
+
+
+            $rootScope.filterTree = {
+                "name": "Family",
+                "children": [
+                    {
+                      "name": "Childhood sexual assault",
+                      "name": "Living with relatives"
+                    }
+                ]
+            }
+
+            window.myObj = {
+                "name": "Debra",
+                "children": [
+                    {
+                      "name": "Family",
+                      "children": [
+                        {"name": "Childhood sexual assault"},
+                        {"name": "Childhood sexual assault gsdgsd"}
+                      ]
+                    },
+                    {
+                      "name": "Violence",
+                      "children": [{
+                        "name": "Childhood sexual assault"
+                      }]
+                    }
+
+                ],
+
+            };
+
+
+
+
+            // item.themes.forEach(function(i,index){
+            //     p.fill(50);
+            //     p.textAlign(p.CENTER);
+            //     p.text(i,item.x,item.y + ((index + 1) * 19));
+            // });
             p.fill(120);
             p.textAlign(p.CENTER);
             p.text(millisToMinutesAndSeconds(item.time), item.x,item.y - 12);
@@ -521,6 +573,7 @@ p.draw = function(){
     var dist = p.dist(p.mouseX,p.mouseY,5, p.windowHeight - 20);
     if(dist < 30){
         averageMode = true;
+        // filters = [];
     }else{
         averageMode = false;
     }
@@ -570,5 +623,5 @@ function getQuoteData(quote, time, stage, overwrite, difference, themes, images,
 }
 
 var myp5 = new p5(a);     
-    
+
 });

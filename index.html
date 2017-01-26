@@ -15,6 +15,7 @@
       <script src="collision.js" type="text/javascript"></script>
       <script src="rendered.js" type="text/javascript"></script>
       <script src="lyrics.js" type="text/javascript"></script>
+      <script src="http://d3js.org/d3.v3.min.js" type="text/javascript"></script>
      
         
       
@@ -35,12 +36,50 @@
         <div ng-repeat="i in colors" class="filter" ng-click="toggleFilter(i[0])" ng-style="{'top': {{$index * 25}} + 'px', 'background-color': (filters.indexOf(i[0]) > - 1) ? {{i[1]}} : 'grey'  }">{{i[0]}}</div>
       </div>
 
-      <div id="sub-themes">
+<!--       <div id="sub-themes">
           <div ng-animate="'animate'" class="filter" ng-repeat="i in subThemes track by $index"
-          ng-style="{'background-color': relevantThemes.indexOf(i) > -1 ? 'rgb(' + subThemeColor + ')': 'grey',
-                    'opacity': relevantThemes.indexOf(i) > -1 ? '1' : '.25'}"
+          ng-style="{'background-color': (relevantThemes.indexOf(i) > -1 && showDescription) ? 'rgb(' + subThemeColor + ')': 'light-grey',
+                    'opacity': (relevantThemes.indexOf(i) > -1 && showDescription) ? '1' : '.25'}"
           >{{i}}</div>
-      </div>
+      </div> -->
+
+      <script>
+
+      
+
+
+      // renderTree();
+
+
+          // var nodes = tree.nodes(myObj);
+          // var links = tree.links(nodes);
+
+          // var node = canvas.selectAll(".node")
+          //   .data(nodes)
+          //   .enter()
+          //   .append("g")
+          //     .attr("class", "node")
+          //     .attr("transform", function (d){ return "translate(" + d.x + "," + d.y + ")"})
+
+          // node.append("circle")
+          //   .attr("r", 5)
+          //   .attr("fill", "steelblue")
+
+          // node.append("text")
+          //   .text(function(d) { return d.name; })
+
+
+          // canvas.selectAll(".link")
+          //   .data(links)
+          //   .enter()
+          //   .append("path")
+          //   .attr("class", "link")
+          //   .attr("fill", "none")
+          //   .attr("stroke", "#ADADAD")
+          //   .attr("d", diagonal);  
+
+      </script>
+
 
   </body>
 </html>

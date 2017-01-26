@@ -15,7 +15,12 @@ var lyrics = [
     "stage": "Early life",
     "overwrite": "growing, kind, like",
     "themes": ["family", "violence"],
-    "subThemes": ["Childhood sexual assault", "Living with relatives", "From \"A-student\" to failing"],
+
+    "subThemes": {"family": ["Living with relatives"], 
+                  "violence": ["Childhood sexual assault", "another item"],
+                    "other": ["From \"A-student\" to failing"]
+    },
+
     "images": [] 
   },
   {
@@ -24,7 +29,11 @@ var lyrics = [
     "stage": "Early life",
     "overwrite": "advantage",
     "themes": ["violence"],
-    "subThemes": ["Childhood sexual assault", "Lack of sex ed/info"],
+
+    "subThemes": {"violence": ["Childhood sexual assault"], 
+                    "other": ["Lack of sex ed/info"]
+    },
+
     "images": ["2.png"] 
   },
   {
@@ -33,7 +42,11 @@ var lyrics = [
     "stage": "Diagnosis",
     "overwrite": "care",
     "themes": ["family", "house", "violence"],
-    "subThemes":["Childhood sexual assault", "Lack of sex ed/info", "Healing later as an adult"],
+
+    "subThemes": {"family": ["Childhood sexual assault"], 
+                    "other": ["Lack of sex ed/info", "Healing later as an adult"]
+    },
+
     "images": []   
   },
   {
@@ -42,7 +55,9 @@ var lyrics = [
     "stage": "Early life",
     "overwrite": "",
     "themes": ["family", "violence"],
-    "subThemes": ["Childhood sexual assault", "Living with relatives", "Family in the South, Moving a lot"],
+    "subThemes": {"family": ["Living with relatives", "Family in the South, Moving a lot"], 
+                    "violence": ["Childhood sexual assault"]
+    },
     "images": [] 
   },
   {
@@ -51,7 +66,9 @@ var lyrics = [
     "stage": "Early life",
     "overwrite": "",
     "themes": ["stigma", "house", "family", "violence"],
-    "subThemes": ["Childhood sexual assault", "Lack of sex ed/info", "Victim becoming perpetrater, Moving a lot"],
+    "subThemes": {"violence": ["Childhood sexual assault"],
+                    "other": ["Lack of sex ed/info", "Victim becoming perpetrater, Moving a lot"]
+    },
     "images": ["1.png"] 
   },
   {
@@ -60,7 +77,9 @@ var lyrics = [
     "stage": "Early life",
     "overwrite": "like, positive, best",
     "themes": ["family", "house"],
-    "subThemes": ["Childhood sexual assault", "Running away from home"],
+    "subThemes": {"violence": ["Childhood sexual assault"],
+                    "house": ["Running away from home"]
+    },
     "images": ["1.png"] 
   },
   {
