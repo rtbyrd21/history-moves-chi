@@ -11,7 +11,7 @@ var lyrics = [
   },
   {
     "quote": "[Debra, can you tell me a little bit about your family growing up?]\nGrowing up, I guess I remember probably growing up with my grandmother because my mom needed to work and that was probably where I experienced my first experience with molestation from the boy downstairs.  It seemed like after that no matter where I went, somebody was always touching me until the age of 14.  I went from being an A student to someone who was always in trouble, fighting, and my grades dropped.  I had been labeled a thief, I had all kinds of names except child of God.  So for me, childhood was I don't know, a give and take kind of situation.  I had some good memories but they are definitely overshadowed by the worst ones.",
-    "start": "00:20.00",
+    "start": "00:40.00",
     "stage": "Early life",
     "overwrite": "growing, kind, like",
     "themes": ["family", "violence"],
@@ -25,7 +25,7 @@ var lyrics = [
   },
   {
     "quote": "[Was there anyone you could talk to about…?]\nI couldn't talk to anybody about something I didn't know anything about.  It’s hard to say that so-and-so is touching me when you don't know that he’s not supposed to do that.  Nobody had ever discussed sex with me, so I didn't know that I wasn’t supposed to be doing it.  So the people that were doing it to me were definitely taking advantage of me in so many ways.  So no, there was no one I could tell because I didn't know what to tell.",
-    "start": "00:40.00",
+    "start": "02:09.00",
     "stage": "Early life",
     "overwrite": "advantage",
     "themes": ["violence"],
@@ -38,7 +38,7 @@ var lyrics = [
   },
   {
     "quote": "[You said the boy lived downstairs, that he would know when your grandmother left or he was like watching you?]\nYes, my grandmother stayed on the second floor and he was the son of the landlord who lived on the first floor.  He definitely knew, and I do therapy now because I had a really bad post traumatic experience where all of this came flooding back to me a little more than a year ago.  All of these memories and…I know he knew better because I remember him saying to me – you don’t have any hairs.  So I'm thinking he was at least 14 when he did this to me.  I didn't know anybody or anything to tell.  Nobody discussed those things with me so I didn't know to discuss them with anybody.",
-    "start": "00:61.00",
+    "start": "02:51.00",
     "stage": "Diagnosis",
     "overwrite": "care",
     "themes": ["family", "house", "violence"],
@@ -51,7 +51,7 @@ var lyrics = [
   },
   {
     "quote": "[Were you living with your grandmother throughout all those years, into your teens?]\nNo, not throughout all those years.  Um, I want to say from the first grade to the third grade I was with my grandmother.  I had a cousin molest me during the summer when I went to visit in Mississippi.  She and her friend, my molestation covered both sexes, they didn't discriminate when it came to me.",
-    "start": "01:43.00",
+    "start": "04:00.00",
     "stage": "Early life",
     "overwrite": "",
     "themes": ["family", "violence"],
@@ -62,7 +62,7 @@ var lyrics = [
   },
   {
     "quote": "[What parts of the city did you live in?]\nMostly the West Side, so when I went to live with my mom at about the third or fourth grade, which meant a new babysitter, which meant two more people to sexually molest me, and these were two girls.  There was no discrimination when it came to me being molested.  And again, I still didn't know what to discuss and what not to discuss because nobody had discussed it with me.  From there I went to another babysitter who was my mom’s best friend, her husband, I guess he figured I was 12, I was old enough.  So from the age of 12 to the age of 14 he did that.  And by this time I'm now a molester myself.  He did it to me and I did it to his daughter.  Still, for whatever reason, nobody connected the dots.  I was just a troubled kid.",
-    "start": "02:17.00",
+    "start": "04:34.00",
     "stage": "Early life",
     "overwrite": "",
     "themes": ["stigma", "house", "family", "violence"],
@@ -73,7 +73,7 @@ var lyrics = [
   },
   {
     "quote": "[What happened when you were 14 that changed things?]\nYes, my mom bought a house, and the man that she is currently married to at the age of I’d say 14½ or 15, they went out one night, one New Year’s, came back married, he tried to kiss me.  I packed my bags and I left.  By then, I still didn't have a name for what had happened to me…but I knew it was wrong.  And I knew I wasn’t doing it anymore.  So I grabbed a knapsack, my bike, and I left.  \n[Okay, so you was 14 then?]\n15, it was two weeks before I turned 16.",
-    "start": "03:53.00",
+    "start": "05:53.00",
     "stage": "Early life",
     "overwrite": "like, positive, best",
     "themes": ["family", "house"],
@@ -84,7 +84,7 @@ var lyrics = [
   },
   {
     "quote": "[And so where were you living then?]\nI was just riding my bike around, I had some older stepsisters and after a couple of days in the streets, being 15 and not having any knowledge whether it was street knowledge or anything you know, I ended up at my sisters’ door.  I had nowhere else to go.  And she tried her best to hide me, she’s my stepsister, and my sister’s boyfriend went and told my dad.  Because everybody was looking for me.  She stayed across the street from the L.  I would sit in the front window with my feet on the ledge, watch the police get out the car, she was shooting drugs and I would knock on the door and say – the police are coming, go out the back door, climb up on the L station and watch them.  And then when they left I would come back downstairs and go in the house.",
-    "start": "05:01.86",
+    "start": "06:42.86",
     "stage": "Early life",
     "overwrite": "",
     "themes": ["family", "house", "neighborhood"],
@@ -93,7 +93,7 @@ var lyrics = [
   },
   {
     "quote": "[Why were they there?  Were they there – ]\nThey were looking for me.  When I left my mom’s house I also left with her Saturday night special, so it really wasn’t me they were looking for, they wanted the gun. \n[The gun!  Okay!]\nThey really didn't give two shits about me, it was the gun that they wanted, which I had already sold so, yes.  But yes, I used to watch them come in the building, haul ass, and just watch them from the L.  Question my sister and then when they left I’d come back in the house.",
-    "start": "06:12.00",
+    "start": "07:54.00",
     "stage": "Early life",
     "overwrite": "",
     "themes": ["house"],
